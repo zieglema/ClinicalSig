@@ -1,0 +1,16 @@
+Package: ClinicalSig
+Type: Package
+Title: Contains several functions helpful for assessing clinical significance
+Version: 0.1
+Date: 2016-06-09
+Author: Matthias Ziegler
+Maintainer: Matthias Ziegler <zieglema@hu-berlin.de>
+Description: There is a function helping to conduct a t test for dependent data
+  including effect size and power. Another function estimates the reliable
+  change index for each person. Yet another function classifies this index. The
+  second to last function classifies each person into one of the 7 classes
+  suggested by Jacobson & Truax (XXXX). The last function puts these classes and
+  CIs into a scatter plot.
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
