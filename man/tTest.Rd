@@ -23,6 +23,9 @@ a list containing results from t test for dependent variables, effect size and p
 \description{
 t test function for paired t test including Hedges g and power
 }
+\examples{
+tTest(pre=U1_GDS_G, post=U2_GDS_G, data=dat, alternative="less", sig.level=.05)
+}
 \author{
 Matthias Ziegler
 }
