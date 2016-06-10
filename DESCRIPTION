@@ -3,7 +3,7 @@ Type: Package
 Title: Contains several functions helpful for assessing clinical significance
 Version: 0.1
 Date: 2016-06-09
-Author: Matthias Ziegler
+Authors@R: person("Matthias", "Ziegler", email = "zieglema@hu-berlin.de", role = c("aut", "cre"))
 Maintainer: Matthias Ziegler <zieglema@hu-berlin.de>
 Description: There is a function helping to conduct a t test for dependent data
   including effect size and power. Another function estimates the reliable
@@ -14,3 +14,4 @@ Description: There is a function helping to conduct a t test for dependent data
 License: What license is it under?
 LazyData: TRUE
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
