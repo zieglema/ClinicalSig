@@ -46,6 +46,10 @@ tTest <- function(pre, post, data, alternative, sig.level){
 #' @param sdNorm Standard deviation of the used measure in the norm group.
 #'
 #' @return Returns the RCI for each person in the data set
+#' @examples
+#' dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
+#' hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
+
 #'
 rci <- function(pre, post, data, rtt, sdNorm){
   if ("rci" %in% names(data)) {warning("variable rci already exists in data frame and will be overwritten")}
@@ -56,8 +60,6 @@ rci <- function(pre, post, data, rtt, sdNorm){
   data
 }
 
-#dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
-#hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
 
 #Function for classifying the RCI####
 #' Title
@@ -67,6 +69,9 @@ rci <- function(pre, post, data, rtt, sdNorm){
 #' @param sigLevel The accepted probability for a type I error.
 #'
 #' @return RCI variable is classified as changed or not
+#' @examples
+#' dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
+#' barplot(table(dataRciClass$rciClass))
 #'
 rciClass <- function(data, nameRci, sigLevel){
   if ("rciClass" %in% names(data)) {warning("variable rciClass already exists in data frame and will be overwritten")}
@@ -78,8 +83,6 @@ rciClass <- function(data, nameRci, sigLevel){
   data
 }
 
-#dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
-#barplot(table(dataRciClass$rciClass))
 
 #Function for categorizing clinical significance####
 
@@ -94,6 +97,11 @@ rciClass <- function(data, nameRci, sigLevel){
 #' @param sigLevel The accepted probability for a type I error.
 #'
 #' @return Each person is assigned to one of 7 classes
+#' @examples
+#' dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
+#' mPath=17.4, sdPath=6.8, sigLevel=.05)
+#' table(dataFinal$csClass)
+#' barplot(table(dataFinal$csClass))
 #'
 clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
   #Defining the criterion
@@ -123,11 +131,6 @@ clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
   data
 }
 
-#dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
-#                     mPath=17.4, sdPath=6.8, sigLevel=.05)
-
-#table(dataFinal$csClass)
-#barplot(table(dataFinal$csClass))
 
 #Function for plotting rci and rci class####
 #' Function for plotting rci and rci class
@@ -145,6 +148,9 @@ clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
 #' @param max Theoretical score maximum in instrument used
 #'
 #' @return A plot depicting the 7 classes and all CIs
+#' @examples
+#' plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
+#' mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
 #'
 plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, scaleName, min, max){
   #Estimating Standard error of difference
@@ -173,7 +179,4 @@ plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, s
   abline(v=upperCI, col="green", lty="dashed")
   abline(v=lowerCI, col="green", lty="dashed")
 }
-
-#plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
-#       mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
 
