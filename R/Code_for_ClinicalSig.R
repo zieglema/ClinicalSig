@@ -1,8 +1,5 @@
 setwd("/Users/Matthias/Seafile/Meine Bibliothek/R Projects")
 
-#devtools::create("ClinSig")
-devtools::document("ClinicalSig")
-
 #Example data set####
 library(openxlsx)
 data <- read.xlsx("clsi.xlsx")
