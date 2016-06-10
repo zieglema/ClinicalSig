@@ -19,6 +19,7 @@
 #' @examples
 #' tTest(pre=U1_GDS_G, post=U2_GDS_G, data=dat, alternative="less", sig.level=.05)
 #' @author Matthias Ziegler
+#' @export
 #'
 tTest <- function(pre, post, data, alternative, sig.level){
   library(pwr)
@@ -49,7 +50,7 @@ tTest <- function(pre, post, data, alternative, sig.level){
 #' @examples
 #' dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
 #' hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
-
+#' @export
 #'
 rci <- function(pre, post, data, rtt, sdNorm){
   if ("rci" %in% names(data)) {warning("variable rci already exists in data frame and will be overwritten")}
@@ -72,6 +73,7 @@ rci <- function(pre, post, data, rtt, sdNorm){
 #' @examples
 #' dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
 #' barplot(table(dataRciClass$rciClass))
+#' @export
 #'
 rciClass <- function(data, nameRci, sigLevel){
   if ("rciClass" %in% names(data)) {warning("variable rciClass already exists in data frame and will be overwritten")}
@@ -102,6 +104,7 @@ rciClass <- function(data, nameRci, sigLevel){
 #' mPath=17.4, sdPath=6.8, sigLevel=.05)
 #' table(dataFinal$csClass)
 #' barplot(table(dataFinal$csClass))
+#' @export
 #'
 clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
   #Defining the criterion
@@ -151,6 +154,7 @@ clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
 #' @examples
 #' plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
 #' mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
+#' @export
 #'
 plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, scaleName, min, max){
   #Estimating Standard error of difference

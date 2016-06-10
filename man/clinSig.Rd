@@ -27,4 +27,11 @@ Each person is assigned to one of 7 classes
 \description{
 Function for categorizing clinical significance
 }
+\examples{
+dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
+mPath=17.4, sdPath=6.8, sigLevel=.05)
+table(dataFinal$csClass)
+barplot(table(dataFinal$csClass))
+
+}
 

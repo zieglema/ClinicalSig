@@ -19,4 +19,9 @@ RCI variable is classified as changed or not
 \description{
 Title
 }
+\examples{
+dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
+barplot(table(dataRciClass$rciClass))
+
+}
 
