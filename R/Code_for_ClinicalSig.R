@@ -1,9 +1,9 @@
 setwd("/Users/Matthias/Seafile/Meine Bibliothek/R Projects/ClinicalSig")
 
 #Example data set####
-library(openxlsx)
-data <- read.xlsx("clsi.xlsx")
-dat <- data
+#library(openxlsx)
+#data <- read.xlsx("clsi.xlsx")
+#dat <- data
 
 #t test function for paired t test including Hedges g and power####
 
@@ -31,7 +31,7 @@ tTest <- function(pre, post, data, alternative, sig.level){
   list(ttest, g, power)
 }
 #testing the function
-tTest(pre=U1_GDS_G, post=U2_GDS_G, data=dat, alternative="less", sig.level=.05)
+#tTest(pre=U1_GDS_G, post=U2_GDS_G, data=dat, alternative="less", sig.level=.05)
 
 #Function for the reliable change index####
 
@@ -54,8 +54,8 @@ rci <- function(pre, post, data, rtt, sdNorm){
   data
 }
 
-dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
-hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
+#dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
+#hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
 
 #Function for classifying the RCI####
 #' Title
@@ -76,8 +76,8 @@ rciClass <- function(data, nameRci, sigLevel){
   data
 }
 
-dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
-barplot(table(dataRciClass$rciClass))
+#dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
+#barplot(table(dataRciClass$rciClass))
 
 #Function for categorizing clinical significance####
 
@@ -121,11 +121,11 @@ clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
   data
 }
 
-dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
-                     mPath=17.4, sdPath=6.8, sigLevel=.05)
+#dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
+#                     mPath=17.4, sdPath=6.8, sigLevel=.05)
 
-table(dataFinal$csClass)
-barplot(table(dataFinal$csClass))
+#table(dataFinal$csClass)
+#barplot(table(dataFinal$csClass))
 
 #Function for plotting rci and rci class####
 #' Function for plotting rci and rci class
@@ -172,6 +172,6 @@ plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, s
   abline(v=lowerCI, col="green", lty="dashed")
 }
 
-plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
-       mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
+#plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
+#       mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
 
