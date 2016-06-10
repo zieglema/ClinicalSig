@@ -1,4 +1,4 @@
-setwd("/Users/Matthias/Seafile/Meine Bibliothek/R Projects/ClinicalSig")
+#setwd("/Users/Matthias/Seafile/Meine Bibliothek/R Projects/ClinicalSig")
 
 #Example data set####
 #library(openxlsx)
