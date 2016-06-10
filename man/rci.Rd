@@ -26,6 +26,5 @@ Function for the reliable change index
 \examples{
 dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
 hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
-
 }
 

@@ -22,6 +22,5 @@ Title
 \examples{
 dataRciClass <- rciClass(data=dataRci, nameRci="rci", sigLevel=.05)
 barplot(table(dataRciClass$rciClass))
-
 }
 

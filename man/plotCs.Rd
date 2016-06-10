@@ -39,6 +39,5 @@ Function for plotting rci and rci class
 \examples{
 plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
 mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
-
 }
 
