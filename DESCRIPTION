@@ -12,5 +12,5 @@ Description: There is a function helping to conduct a t test for dependent data
   suggested by Jacobson & Truax (XXXX). The last function puts these classes and
   CIs into a scatter plot.
 License: What license is it under?
-LazyData: TRUE
+#LazyData: TRUE
 RoxygenNote: 5.0.1
