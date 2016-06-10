@@ -16,6 +16,7 @@
 #' @param sig.level The accepted probability for a type I error.
 #'
 #' @return a list containing results from t test for dependent variables, effect size and power
+#' @example tTest(pre=U1_GDS_G, post=U2_GDS_G, data=dat, alternative="less", sig.level=.05)
 #' @author Matthias Ziegler
 #'
 tTest <- function(pre, post, data, alternative, sig.level){
