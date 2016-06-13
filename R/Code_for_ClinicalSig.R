@@ -23,14 +23,13 @@
 
 #'
 tTest <- function(pre, post, data, alternative, sig.level){
-  library(pwr)
   ttest <- t.test(eval(substitute(post), data),eval(substitute(pre), data),
                   alternative=alternative, paired=TRUE, conf.level=1-sig.level)
   sed <- sd(eval(substitute(pre),data)-eval(substitute(post),data), na.rm=T)
   diff <- ttest$estimate
   g <- diff/sed
   names(g) <- "Effect Size Hedge's g"
-  power <- pwr.t.test(n=nrow(data), d=g, sig.level=sig.level,
+  power <- pwr::pwr.t.test(n=nrow(data), d=g, sig.level=sig.level,
                       power=NULL, type="paired", alternative="greater")
   list(ttest, g, power)
 }
