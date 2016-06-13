@@ -23,7 +23,6 @@
 
 #'
 tTest <- function(pre, post, data, alternative, sig.level){
-  library(pwr)
   ttest <- t.test(eval(substitute(post), data),eval(substitute(pre), data),
                   alternative=alternative, paired=TRUE, conf.level=1-sig.level)
   sed <- sd(eval(substitute(pre),data)-eval(substitute(post),data), na.rm=T)
