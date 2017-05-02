@@ -30,7 +30,7 @@ tTest <- function(pre, post, data, alternative, sig.level){
   g <- diff/sed
   names(g) <- "Effect Size Hedge's g"
   power <- pwr::pwr.t.test(n=nrow(data), d=g, sig.level=sig.level,
-                      power=NULL, type="paired", alternative="less")
+                      power=NULL, type="paired", alternative="two.sided")
   list(ttest, g, power)
 }
 #testing the function
