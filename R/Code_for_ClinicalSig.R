@@ -1,4 +1,5 @@
 #setwd("/Users/Matthias/Seafile/Meine Bibliothek/R Projects/ClinicalSig")
+#setwd("~/Meine Bibliothek/R/R Projects/ClinicalSig")
 
 #Example data set####
 #library(openxlsx)
@@ -49,7 +50,7 @@ tTest <- function(pre, post, data, alternative, sig.level){
 #' @return Returns the RCI for each person in the data set
 #' @export
 #' @examples
-#' dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=6.8)
+#' dataRci <- rci(pre="U1_GDS_G", post="U2_GDS_G", data=dat, rtt=.83, sdNorm=3.32)
 #' hist(dataRci$rci, main="Histogram of RCI", xlab="RCI", breaks=30, col="blue")
 #'
 rci <- function(pre, post, data, rtt, sdNorm){
@@ -102,7 +103,7 @@ rciClass <- function(data, nameRci, sigLevel){
 #' @export
 #' @examples
 #' dataFinal <- clinSig(data=dataRciClass, pre="U1_GDS_G", post="U2_GDS_G", consistency=.91,
-#' mPath=17.4, sdPath=6.8, sigLevel=.05)
+#' mPath=14.78, sdPath=3.32, sigLevel=.05)
 #' table(dataFinal$csClass)
 #' barplot(table(dataFinal$csClass))
 #'
@@ -154,7 +155,7 @@ clinSig <- function(data, pre, post, consistency, mPath, sdPath, sigLevel){
 #' @export
 #' @examples
 #' plotCs(data=dat, pre="U1_GDS_G", post="U2_GDS_G", sigLevel=.05, consistency=.91, rtt=.83,
-#' mPath=17.4, sdPath=6.8, scaleName="GDS Score", min=0, max=30)
+#' mPath=14.78, sdPath=3.32, scaleName="GDS Score", min=0, max=30)
 #'
 plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, scaleName, min, max){
   #Estimating Standard error of difference
@@ -164,17 +165,17 @@ plotCs <- function(data, pre, post, sigLevel, rtt, consistency, mPath, sdPath, s
   #Defining health status
   healthy <- mPath-2*sdPath
   #Defining the CIs
-  Se <- abs(qnorm(sigLevel/2, lower.tail=T))*sdPath*sqrt(1-consistency)
+  Se <- abs(qnorm(sigLevel/2, lower.tail=TRUE))*sdPath*sqrt(1-consistency)
   upperCI <- healthy+Se
   lowerCI <- healthy-Se
   #plot
-  plot(data[,pre]~data[,post], xlab=paste("Pre", scaleName, sep=" "),
-       ylab=paste("Post", scaleName, sep=" "), ylim=c(min,max), xlim=c(min,max))
+  plot(data[,pre]~data[,post], xlab=paste("Post", scaleName, sep=" "),
+       ylab=paste("Pre", scaleName, sep=" "), ylim=c(min,max), xlim=c(min,max))
   #Adding the bisecting line
   abline(a=0, b=1, col="red")
   #Adding the CI
-  abline(a=qnorm(sigLevel/2, lower.tail=T)*Sdiff, b=1, col="red", lty="dashed")
-  abline(a=abs(qnorm(sigLevel/2, lower.tail=T))*Sdiff, b=1, col="red", lty="dashed")
+  abline(a=qnorm(sigLevel/2, lower.tail=TRUE)*Sdiff, b=1, col="red", lty="dashed")
+  abline(a=abs(qnorm(sigLevel/2, lower.tail=TRUE))*Sdiff, b=1, col="red", lty="dashed")
   #Adding the cutoff for diagnosis
   abline(a=healthy, b=0, col="blue")
   abline(a=upperCI, b=0, col="blue", lty="dashed")
